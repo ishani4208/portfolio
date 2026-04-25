@@ -7,27 +7,36 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: "Portfolio Website",
-    description: "My Portfolio",
-    image: "/images/portfolio.png",
-    tag: ["All", "Web"],
+    title: "Spotify Song Classifier",
+    description: "An AI/ML application that predicts the mood of a Spotify track using a trained Random Forest model.",
+    image: "/images/spotify-classifier.png",
+    tag: ["All", "AI/ML"],
     gitUrl: "/",
     previewUrl: "/",
   },
   {
     id: 2,
-    title: "Todo list",
-    description: "A to-do list that keeps track of general tasks",
-    image: "/images/to-do.png",
+    title: "Uber Friends",
+    description: "A web application that allows users to book rides either solo or with friends.",
+    image: "/images/uber-friends.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
   },
-  {
+    {
     id: 3,
-    title: "Analog clock",
-    description: "A simple analog created using HTML,CSS and Javascript",
-    image: "/images/clock1.png",
+    title: "NASA APOD Daily",
+    description: "A web application that fetches and displays NASA's Astronomy Picture of the Day.",
+    image: "/images/nasa-apod.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+    {
+    id: 4,
+    title: "To-Do List",
+    description: "A to-do list that keeps track of general tasks",
+    image: "/images/to-do.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
@@ -70,8 +79,8 @@ const ProjectsSection = () => {
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
+          name="AI/ML"
+          isSelected={tag === "AI/ML"}
         />
       </div>
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">

@@ -1,17 +1,16 @@
 import { NextResponse } from "next/server";
-//import { EmailTemplate } from '../../components/EmailTemplate';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
-export default async (req, res) => {
-  const { body } = req;
-  const { email } = body;
+export async function POST(req) {
   try {
+    const { email, subject, message } = await req.json();
     const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: [fromEmail],
+      reply_to: email,
       subject: subject,
       react: (
         <>
@@ -22,8 +21,11 @@ export default async (req, res) => {
         </>
       ),
     });
-  return NextResponse.json(data);
+
+    console.log("Resend Success:", data);
+    return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    console.error("Catch Error:", error);
+    return NextResponse.json({ error }, { status: 500 });
   }
 }
